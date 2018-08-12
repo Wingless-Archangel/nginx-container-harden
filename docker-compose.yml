@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nginx-harden:
+    image: nginx:latest
+    ports:
+      - "8443:443" # Need to change port to the proper port later
+      - "8000:80" # Need to change the port the proper port later
+    volumes:
+      - ./etc/default.conf:/etc/nginx/conf.d/default.conf
+      - ./etc/localhost.pem:/etc/nginx/localhost.pem
+      - ./etc/localhost.key:/etc/nginx/localhost.key
+      - ./etc/dhparams.pem:/etc/nginx/dhparams.pem
+      - ./etc/security-headers.conf:/etc/nginx/security-headers.conf
+      - ./etc/cors-headers.conf:/etc/nginx/cors-headers.conf
+      - ./html/index.html:/usr/share/nginx/html/index.html
