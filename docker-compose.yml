@@ -3,7 +3,8 @@ version: '3'
 
 services:
   nginx-harden:
-    image: nginx:latest
+    # image: nginx:latest
+    build: ./
     ports:
       - "8443:443" # Need to change port to the proper port later
       - "8000:80" # Need to change the port the proper port later
