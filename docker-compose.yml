@@ -1,5 +1,6 @@
 version: '3'
 
+
 services:
   nginx-harden:
     image: nginx:latest
@@ -11,6 +12,13 @@ services:
       - ./etc/localhost.pem:/etc/nginx/localhost.pem
       - ./etc/localhost.key:/etc/nginx/localhost.key
       - ./etc/dhparams.pem:/etc/nginx/dhparams.pem
-      - ./etc/security-headers.conf:/etc/nginx/security-headers.conf
+      - ./etc/security-configs.conf:/etc/nginx/security-configs.conf
       - ./etc/cors-headers.conf:/etc/nginx/cors-headers.conf
       - ./html/index.html:/usr/share/nginx/html/index.html
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 3s
+      retries: 3
+      # start_period: 40s # for docker-compose version 3.4 or higher  
+
