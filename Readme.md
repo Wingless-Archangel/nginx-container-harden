@@ -12,6 +12,8 @@ This is an attempt to harden NGINX within the container environment. The base do
 - configure time out to prevent some Denial of Service Attack
 - disable weak SSL/TLS protocols and ciphers
 - provide the example CORS configuration if required
+- disable MIME type sniffing
+- enable HSTS
 
 ## Warning
 
